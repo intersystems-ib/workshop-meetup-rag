@@ -1,0 +1,23 @@
+
+    // unexpire default passwords
+    set $namespace = "%SYS"
+    do ##class(Security.Users).UnExpireUserPasswords("*")
+    
+    // create namespace
+    do $SYSTEM.OBJ.Load("/opt/irisapp/src/Install/Installer.cls", "ck")
+    do ##class(LLMRAG.Installer).Install()
+    
+    // import source code & schemas
+    set $namespace="LLMRAG"
+    do $SYSTEM.OBJ.Load("/opt/irisapp/src/LLMRAG/DOCUMENTCHUNK.cls", "ck")
+
+    // install zpm
+    s version="latest" s r=##class(%Net.HttpRequest).%New(),r.Server="pm.community.intersystems.com",r.SSLConfiguration="ISC.FeatureTracker.SSL.Config" d r.Get("/packages/zpm/"_version_"/installer"),$system.OBJ.LoadStream(r.HttpResponse.Data,"c")
+
+    zpm "enable -community"
+
+    // install some sample data (Holefoods, etc.)
+    zpm "install samples-bi"
+
+    // load some modifications on Holefoods (e.g. ForeignKeys, etc.)
+    do $SYSTEM.OBJ.LoadDir("/opt/irisapp/src/HoleFoods/", "ck", ,1)

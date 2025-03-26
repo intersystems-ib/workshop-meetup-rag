@@ -1,0 +1,12 @@
+.ipynb_checkpoints
+.ipython
+.jupyter
+.local
+.npm
+.cache
+.env
+shared
+data/model
+__pycache__
+python/model
+.venv/*

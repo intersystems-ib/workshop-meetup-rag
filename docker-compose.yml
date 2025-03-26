@@ -1,0 +1,31 @@
+services:
+
+  # iris
+  iris:
+    container_name: iris
+    build:
+      context: .
+      dockerfile: iris/Dockerfile
+    ports:
+      - 52774:52773
+      - 51774:1972
+    volumes:
+    - ./iris/shared:/shared
+    environment:
+    - ISC_DATA_DIRECTORY=/shared/durable
+    
+  # jupyter notebook
+  jupyter:
+    build:
+      context: .
+      dockerfile: jupyter/Dockerfile
+    container_name: jupyter
+    ports: 
+      - "8888:8888"
+    environment: 
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_ALLOW_INSECURE_WRITES=true
+    volumes: 
+      - ./jupyter:/home/jovyan
+      - ./data:/app/data
+    command: "start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''" 

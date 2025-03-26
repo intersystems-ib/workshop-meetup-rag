@@ -1,0 +1,11 @@
+pypdf
+langchain-community
+langchain-text-splitters
+langchain-openai
+langchain_iris
+fastapi[standard]
+streamlit
+mistral_common
+langchain_mistralai
+sentence-transformers
+../jupyter/intersystems_irispython-3.2.0-py3-none-any.whl
