@@ -1,4 +1,4 @@
-# workshop-meetup
+# workshop-meetup-rag
 Workshop to create a RAG application using LLM model and Streamlit. 
 
 This workshop is developed in Python 🐍 (Streamlit) and InterSystems IRIS.
@@ -19,7 +19,7 @@ Build the image we will use during the workshop:
 Clone the repository:
 ```bash
 git clone https://github.com/intersystems-ib/workshop-meetup-rag
-cd workshop-llm
+cd workshop-meetup-rag
 ```
 
 Build the image:
