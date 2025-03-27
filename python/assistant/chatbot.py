@@ -71,7 +71,7 @@ def get_response(user_query, chat_history):
                 context = context +"".join(doc.page_content)
 
     template = """
-    Eres un asistente de farmacia. Responde las siguientes preguntas considerando la historia de la conversación:
+    Eres un asistente de farmacia. Responde las siguientes preguntas considerando la historia de la conversación y utilizando el contexto asociado:
 
     Chat history: {chat_history}
 
